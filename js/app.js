@@ -12,10 +12,10 @@ class AlienShips {
 		if(Math.random() < this.accuracy){
 			hit = true;
 			game.ussAssembly.hull -= this.firepower;
-			console.log('Hit by alien ship!! Hull is now at ' + game.ussAssembly.hull);
+			console.log('Hit by alien ship!! USS Assembly hull is now at ' + game.ussAssembly.hull);
 		}else{
 			hit = false;
-			console.log('Alen ship missed!!!');
+			console.log('Alien ship missed!!!');
 		}
 	}
 }
@@ -35,7 +35,7 @@ class UserShip {
 			console.log('You hit the alien ship!! Hull is now at ' + game.AlienShips[0].hull);
 		}else{
 			hit = false;
-			console.log('Alen ship missed!!!');
+			console.log('USS Assembly missed!!!');
 		}
 	}
 }
@@ -58,13 +58,17 @@ const game = {
 		while(i < num){
 			this.ussAssembly.attack();
 			if(this.AlienShips[0].hull > 0){
-				this.AlienShips[0].attack();
+				this.AlienShips[0].attack()
+				if(this.ussAssembly.hull <= 0){
+					console.log('GAME OVER!!');
+					break
+				}
 			}else{ 
 				console.log('You destroyed the alien ship!!!');
 				const attackOrRetreat = prompt('Continue? Y/N?')
-				if(attackOrRetreat === "Y"){
+				if(attackOrRetreat === "y"){
 					//reove from AlienShips array
-				this.AlienShips = this.AlienShips.shift()
+				this.AlienShips.shift()
 				console.log(this.AlienShips);
 				i++
 				}else{
@@ -75,6 +79,7 @@ const game = {
 			}
 			
 		}
-
+	const youWon = 'You destroyed all the aliens! Congratulations!'
+	return youWon;
 	}
 }
