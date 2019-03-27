@@ -60,8 +60,10 @@ const game = {
 			if(this.AlienShips[0].hull > 0){
 				this.AlienShips[0].attack()
 				if(this.ussAssembly.hull <= 0){
+					const youLose = 'Sorry, you lost!!!';
 					console.log('GAME OVER!!');
-					break
+					return 'You lost!' // breaks loop and returns you lose text
+
 				}
 			}else{ 
 				console.log('You destroyed the alien ship!!!');
@@ -79,6 +81,7 @@ const game = {
 			}
 			
 		}
+
 	const youWon = 'You destroyed all the aliens! Congratulations!'
 	return youWon;
 	}
